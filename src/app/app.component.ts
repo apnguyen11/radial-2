@@ -377,25 +377,14 @@ export class AppComponent {
         .attr('stroke-opacity', 0.88)
         .attr('stroke-width', 3)
         .attr('d', line.radius(d => y2(d.Pressure))(this.HPData));
-   
-
-    // svg
-    //   .append('path')
-    //   .attr('fill', '#15CE07')
-    //   .attr('fill-opacity', 0.2)
-    //   .attr('d', area.innerRadius((d:any) => y(d.min)).outerRadius((d:any) => y(d.max))(this.p500Data));
-
-    // svg
-    //   .append('path')
-    //   .attr('fill', '#15CE07')
-    //   .attr('fill-opacity', 0.2)
-    //   .attr('d', area.innerRadius((d:any) => y(d.min)).outerRadius((d:any) => y(d.max))(this.plist5000[0]));
       
     svg.append('g').call(y2Axis);
     svg.append('g').call(xAxis);
-    // svg.append('g').call(yAxis);
 
-    if(this.plist5000[0].length == this.HPData.length + 1){
+    let endLastDate = new Date("2019-12-12T19:48:00");
+    let lastHPDate = new Date(this.HPData[this.HPData.length - 1].TimeStamp)
+
+    if(lastHPDate > endLastDate){
       console.log("its equal!!!!!")
       console.log(this.plist5000[0])
       svg
